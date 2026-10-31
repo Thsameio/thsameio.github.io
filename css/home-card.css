@@ -61,8 +61,16 @@
   transition: transform .7s ease;
 }
 
+/* 悬停时轻微放大（不要旋转头像） */
 .hc-card:hover .hc-avatar img {
-  transform: rotate(360deg);
+  transform: scale(1.06);
+}
+
+/* 关闭主题自带的各种头像 hover 旋转 */
+.avatar-img img:hover,
+#aside-content .card-info .avatar-img img:hover {
+  transform: none;
+  animation: none;
 }
 
 /* ---------- 主体 ---------- */
