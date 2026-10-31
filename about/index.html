@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>关于我 | 曹璐逸的博客</title><meta name="author" content="曹璐逸"><meta name="copyright" content="曹璐逸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="👋 嗨，我是曹璐逸大连理工大学 2026 级 本科生。 正在学 C 语言（循环、数组、指针，一个一个啃），也在折腾怎么把脑子里的想法做成看得见的东西 —— 这个博客就是其中之一。 本站基于 Hexo 8 + Butterfly 5 搭建，托管在 GitHub Pages。从装环境到抠配置，全是一行一行试出来的。   🧭 折腾时间线                    建站记录">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="http://thsameio.github.io/about/index.html">
+<meta property="og:site_name" content="曹璐逸的博客">
+<meta property="og:description" content="👋 嗨，我是曹璐逸大连理工大学 2026 级 本科生。 正在学 C 语言（循环、数组、指针，一个一个啃），也在折腾怎么把脑子里的想法做成看得见的东西 —— 这个博客就是其中之一。 本站基于 Hexo 8 + Butterfly 5 搭建，托管在 GitHub Pages。从装环境到抠配置，全是一行一行试出来的。   🧭 折腾时间线                    建站记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://thsameio.github.io/img/123.jpg">
+<meta property="article:published_time" content="2026-10-31T13:30:00.000Z">
+<meta property="article:modified_time" content="2026-10-31T13:28:48.607Z">
+<meta property="article:author" content="曹璐逸">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://thsameio.github.io/img/123.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://thsameio.github.io/about/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关于我',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/home-card.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/beijing.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/123.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/18.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">曹璐逸的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">关于我</h1></div></header><main class="layout hide-aside" id="content-inner"><div id="page"><div class="container" id="article-container"><h2 id="👋-嗨，我是曹璐逸"><a href="#👋-嗨，我是曹璐逸" class="headerlink" title="👋 嗨，我是曹璐逸"></a>👋 嗨，我是曹璐逸</h2><p>大连理工大学 <strong>2026 级</strong> 本科生。</p>
+<p>正在学 C 语言（循环、数组、指针，一个一个啃），也在折腾怎么把脑子里的想法做成看得见的东西 —— 这个博客就是其中之一。</p>
+<div class="note info fas icon-padding flat"><i class="note-icon fa-lightbulb"></i><p>本站基于 <strong>Hexo 8</strong> + <strong>Butterfly 5</strong> 搭建，托管在 GitHub Pages。从装环境到抠配置，全是一行一行试出来的。</p>
+</div>
+
+<h2 id="🧭-折腾时间线"><a href="#🧭-折腾时间线" class="headerlink" title="🧭 折腾时间线"></a>🧭 折腾时间线</h2><div class="timeline "><div class='timeline-item headline'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>建站记录</p>
+</div>
+        </div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2026.10.31</p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>首页加上了个人名片卡和打字机副标题，站点终于不像个空壳了</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2026.10.31</p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>写下人生第一篇博客</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2026.10.31</p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>第一次把网站部署上线，刷出自己域名那一刻还挺爽的</p>
+</div>
+      </div></div>
+
+<h2 id="📚-正在学什么"><a href="#📚-正在学什么" class="headerlink" title="📚 正在学什么"></a>📚 正在学什么</h2><div class="table-container">
+
+<table>
+<thead>
+<tr>
+<th align="left">方向</th>
+<th align="left">当前进度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">C 语言</td>
+<td align="left">基础语法 · 循环 · 数组</td>
+</tr>
+<tr>
+<td align="left">前端</td>
+<td align="left">HTML &#x2F; CSS · 解锁中</td>
+</tr>
+<tr>
+<td align="left">Hexo 博客</td>
+<td align="left">主题配置 · 页面定制</td>
+</tr>
+</tbody></table>
+</div>
+
+<h2 id="🔧-这个站用了什么"><a href="#🔧-这个站用了什么" class="headerlink" title="🔧 这个站用了什么"></a>🔧 这个站用了什么</h2><ul>
+<li>框架：<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></li>
+<li>主题：<a target="_blank" rel="noopener" href="https://butterfly.js.org/">Butterfly</a></li>
+<li>托管：GitHub Pages</li>
+<li>图标：Font Awesome 6</li>
+</ul>
+<h2 id="📮-找到我"><a href="#📮-找到我" class="headerlink" title="📮 找到我"></a>📮 找到我</h2><a class="btn-beautify blue" target="_blank" rel="noopener" href="https://github.com/Thsameio" title="GitHub"><i class="fab fa-github"></i><span>GitHub</span></a>
+<a class="btn-beautify orange" href="mailto:1085807014@qq.com" title="发邮件给我"><i class="fas fa-envelope"></i><span>发邮件给我</span></a>
+
+<hr>
+<p>谢谢你逛到这一页 🙌 随便看看，别客气。</p>
+</div></div></main><footer id="footer" style="background-image: url(/img/yejiao.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 曹璐逸</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><div class="js-pjax"></div><div><canvas id="snow" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none"></canvas></div><script async src="https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/js/snow.min.js"></script><script src="/js/home-card.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="https://events.vercount.one/js"></script></div></body></html>

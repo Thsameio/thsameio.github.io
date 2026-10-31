@@ -1,0 +1,287 @@
+/* ==========================================================
+   首页个人名片卡  (home-card)
+   配色跟随 Butterfly 主题变量，明暗模式自适应
+   ========================================================== */
+
+.hc-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 30px 34px;
+  margin: 0 0 20px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card-bg, #fff);
+  box-shadow: 0 4px 12px 6px rgba(0, 0, 0, .04);
+  transition: box-shadow .3s ease, transform .3s ease;
+}
+
+.hc-card:hover {
+  box-shadow: 0 8px 22px 10px rgba(0, 0, 0, .08);
+  transform: translateY(-2px);
+}
+
+/* 顶部渐变条 */
+.hc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #49b1f5, #00c4b6 55%, #ff7242);
+}
+
+/* 右上角装饰光晕 */
+.hc-card::after {
+  content: '';
+  position: absolute;
+  right: -70px;
+  top: -70px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(73, 177, 245, .18), rgba(0, 196, 182, .10));
+  pointer-events: none;
+}
+
+/* ---------- 头像 ---------- */
+.hc-avatar {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hc-avatar img {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--card-bg, #fff);
+  box-shadow: 0 0 0 3px rgba(73, 177, 245, .35), 0 4px 10px rgba(0, 0, 0, .12);
+  transition: transform .7s ease;
+}
+
+.hc-card:hover .hc-avatar img {
+  transform: rotate(360deg);
+}
+
+/* ---------- 主体 ---------- */
+.hc-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hc-name {
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-highlight-color, #4c4948);
+}
+
+.hc-name .hc-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: hcWave 2.6s ease-in-out infinite;
+}
+
+@keyframes hcWave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  70% { transform: rotate(-18deg); }
+  80% { transform: rotate(14deg); }
+  90% { transform: rotate(-8deg); }
+}
+
+.hc-slogan {
+  margin: 0 0 12px;
+  font-size: .92rem;
+  line-height: 1.7;
+  color: var(--font-color, #5a5a5a);
+  opacity: .85;
+}
+
+/* ---------- 日期条 ---------- */
+.hc-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  margin-bottom: 14px;
+  border-radius: 20px;
+  font-size: .84rem;
+  background: rgba(73, 177, 245, .10);
+  color: var(--text-highlight-color, #4c4948);
+}
+
+.hc-date i {
+  color: #49b1f5;
+}
+
+.hc-date .hc-sep {
+  opacity: .4;
+}
+
+.hc-date .hc-prog {
+  color: #00c4b6;
+  font-weight: 600;
+}
+
+/* ══════════ 无封面文章卡片：自适应高度，消除大片留白 ══════════ */
+#recent-posts .recent-post-item.hc-nocover {
+  height: auto;
+  min-height: 7.5em;
+  padding: 26px 32px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+#recent-posts .recent-post-item.hc-nocover > .recent-post-info {
+  width: 100%;
+  padding: 0;
+}
+
+#recent-posts .recent-post-item.hc-nocover .article-title {
+  display: block;
+  font-size: 1.22rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+#recent-posts .recent-post-item.hc-nocover .article-meta-wrap {
+  font-size: .85rem;
+}
+
+/* 摘要最多两行，避免长短文高度差异过大 */
+#recent-posts .recent-post-item.hc-nocover .content {
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ---------- 统计 ---------- */
+.hc-stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hc-stat {
+  flex: 1 1 92px;
+  min-width: 88px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-align: center;
+  background: rgba(73, 177, 245, .07);
+  transition: background .3s ease, transform .3s ease;
+}
+
+.hc-stat:hover {
+  background: rgba(73, 177, 245, .16);
+  transform: translateY(-2px);
+}
+
+.hc-stat b {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #49b1f5;
+}
+
+.hc-stat span {
+  font-size: .78rem;
+  opacity: .72;
+  color: var(--font-color, #5a5a5a);
+}
+
+/* ---------- 社交按钮 ---------- */
+.hc-social {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-left: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 22px;
+  font-size: .85rem;
+  color: #fff !important;
+  text-decoration: none;
+  white-space: nowrap;
+  background: #49b1f5;
+  transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+}
+
+.hc-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 5px 14px rgba(73, 177, 245, .40);
+}
+
+.hc-btn.hc-mail {
+  background: #4a7dbe;
+}
+
+.hc-btn.hc-mail:hover {
+  box-shadow: 0 5px 14px rgba(74, 125, 190, .40);
+}
+
+.hc-btn.hc-more {
+  background: #00c4b6;
+}
+
+.hc-btn.hc-more:hover {
+  box-shadow: 0 5px 14px rgba(0, 196, 182, .40);
+}
+
+/* ---------- 暗色模式微调 ---------- */
+[data-theme="dark"] .hc-card {
+  box-shadow: 0 4px 12px 6px rgba(0, 0, 0, .30);
+}
+
+[data-theme="dark"] .hc-card:hover {
+  box-shadow: 0 8px 22px 10px rgba(0, 0, 0, .38);
+}
+
+[data-theme="dark"] .hc-avatar img {
+  border-color: var(--card-bg, #1f1f1f);
+}
+
+/* ---------- 移动端 ---------- */
+@media (max-width: 768px) {
+  .hc-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 26px 18px;
+    gap: 16px;
+  }
+
+  .hc-social {
+    margin-left: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hc-stats {
+    width: 100%;
+  }
+
+  .hc-stat {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
