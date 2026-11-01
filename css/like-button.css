@@ -1,0 +1,99 @@
+/* ==========================================================
+   点赞按钮（样式源自 Uiverse.io by LilaRest，已把裸 button
+   选择器收窄为 .like-btn，避免影响主题其它按钮）
+   ========================================================== */
+.like-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 30px auto 10px;
+  padding: 14px 28px 14px 26px;
+  box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background-color: #e8e8e8;
+  border-color: #ffe2e2;
+  border-style: solid;
+  border-width: 9px;
+  border-radius: 35px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  color: rgb(134, 124, 124);
+  font-family: monospace;
+  transition:
+    transform 400ms cubic-bezier(0.68, -0.55, 0.27, 2.5),
+    border-color 400ms ease-in-out,
+    background-color 400ms ease-in-out;
+  word-spacing: -2px;
+  position: relative;
+}
+
+/* 两颗心叠在一起：默认显示空心，悬停/已赞显示实心并跳动 */
+.like-btn .heart {
+  position: relative;
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+}
+
+.like-btn .heart svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+}
+
+.like-btn .empty {
+  fill: none;
+  stroke: rgb(255, 110, 110);
+  stroke-width: 2;
+  transition: opacity 100ms ease-in-out;
+}
+
+.like-btn .filled {
+  fill: rgb(255, 110, 110);
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+}
+
+@keyframes movingBorders {
+  0%   { border-color: #fce4e4; }
+  50%  { border-color: #ffd8d8; }
+  90%  { border-color: #fce4e4; }
+}
+
+.like-btn:hover {
+  background-color: #eee;
+  transform: scale(105%);
+  animation: movingBorders 3s infinite;
+}
+
+/* 悬停 或 已点赞：空心淡出、实心出现并跳动 */
+.like-btn:hover .empty,
+.like-btn.liked .empty {
+  opacity: 0;
+}
+
+.like-btn:hover .filled,
+.like-btn.liked .filled {
+  opacity: 1;
+  animation: beatingHeart 1.2s infinite;
+}
+
+.like-btn .like-label {
+  margin-right: 8px;
+}
+
+.like-btn .like-count {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes beatingHeart {
+  0%   { transform: scale(1); }
+  15%  { transform: scale(1.15); }
+  30%  { transform: scale(1); }
+  45%  { transform: scale(1.15); }
+  60%  { transform: scale(1); }
+}
