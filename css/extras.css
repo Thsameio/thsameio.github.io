@@ -1,0 +1,84 @@
+/* ===========================================================
+   extras.css —— 博客扩展功能（纯前端，无后端、无插件）
+   - 阅读进度条 / 外链标记 / 文章图片柔化 / 导航滚动阴影
+   - 公告条 / 页脚统计 的样式
+   =========================================================== */
+
+/* 1) 阅读进度条（仅文章页显示，由 JS 控制宽度） */
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  z-index: 9999;
+  background: linear-gradient(90deg, #ff9a9e 0%, #fbc2eb 45%, #a1c4fd 100%);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .25);
+  transition: width .12s linear;
+  pointer-events: none;
+}
+/* 非文章页隐藏进度条（用 :has 排除主页/关于/标签页等） */
+body:not(:has(#article-container)) #reading-progress { display: none; }
+
+/* 2) 外链标记 ↗（Butterfly 的 external_link 会给外链加 target=_blank） */
+.post-content a[target="_blank"]::after,
+.article-container a[target="_blank"]::after {
+  content: " \2197";
+  font-size: .82em;
+  opacity: .65;
+  margin-left: 1px;
+}
+
+/* 3) 文章内图片：柔和圆角 + 阴影（不影响首页名片卡 / fancybox） */
+.post-content img,
+.article-container img {
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .18);
+}
+
+/* 4) 导航栏滚动后轻微阴影（提升可读性，不改变透明外观） */
+#nav.nav-scrolled {
+  box-shadow: 0 2px 14px rgba(0, 0, 0, .16);
+}
+
+/* 5) 公告条（可关闭，localStorage 记忆） */
+#site-announce {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  max-width: min(92vw, 560px);
+  background: rgba(28, 30, 42, .88);
+  color: #fff;
+  padding: 12px 44px 12px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .32);
+  z-index: 10000;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+#site-announce .announce-close {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  opacity: .75;
+}
+#site-announce .announce-close:hover { opacity: 1; }
+
+/* 6) 页脚统计（运行天数 / 访客数） */
+#extras-footer {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .55);
+}
+#extras-footer .extras-sep { opacity: .45; margin: 0 8px; }
+
+/* 7) 全局平滑滚动 */
+html { scroll-behavior: smooth; }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面走丢了 · 曹璐逸的博客</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #0e0f1a url(/img/bg-blackhole.jpg) center / cover no-repeat fixed;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      background: rgba(20, 22, 34, .72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      padding: 48px 40px;
+      max-width: 460px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+    }
+    .code { font-size: 96px; font-weight: 800; line-height: 1; letter-spacing: 4px;
+      background: linear-gradient(90deg, #ff9a9e, #a1c4fd); -webkit-background-clip: text;
+      background-clip: text; color: transparent; }
+    .msg { font-size: 20px; margin: 18px 0 8px; font-weight: 600; }
+    .sub { font-size: 14px; opacity: .8; line-height: 1.6; margin-bottom: 28px; }
+    .btn {
+      display: inline-block; text-decoration: none; color: #fff; font-size: 15px;
+      padding: 11px 26px; border-radius: 999px;
+      background: linear-gradient(90deg, #ff9a9e, #a1c4fd);
+      box-shadow: 0 8px 24px rgba(161, 196, 253, .35);
+      transition: transform .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .emoji { font-size: 40px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="emoji">🛸</div>
+    <div class="code">404</div>
+    <div class="msg">哎呀，页面飞进黑洞了</div>
+    <div class="sub">你访问的页面不存在或已被移动。<br>不如回到首页，继续探索吧～</div>
+    <a class="btn" href="/">返回首页</a>
+  </div>
+</body>
+</html>
