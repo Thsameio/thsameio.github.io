@@ -293,3 +293,100 @@
     min-width: 0;
   }
 }
+
+/* ==========================================================
+   加载动画兜底样式
+   主题源码 loading.styl 是「条件编译」，当 hexo-config 读取不到
+   _config.butterfly.yml 的 preloader 配置时，这段 CSS 不会打进
+   index.css，导致 #loading-box 变成顶部白色块。这里直接兜底，
+   保证加载页始终有正确的全屏遮罩与滑出动画。
+   ========================================================== */
+#loading-box .loading-left-bg,
+#loading-box .loading-right-bg {
+  position: fixed;
+  z-index: 1000;
+  width: 50%;
+  height: 100%;
+  background-color: var(--preloader-bg, #37474f);
+}
+
+#loading-box .loading-left-bg {
+  left: 0;
+}
+
+#loading-box .loading-right-bg {
+  right: 0;
+}
+
+#loading-box .spinner-box {
+  position: fixed;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+#loading-box .spinner-box .configure-border-1 {
+  position: absolute;
+  padding: 3px;
+  width: 115px;
+  height: 115px;
+  background: #ffab91;
+  animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
+}
+
+#loading-box .spinner-box .configure-border-2 {
+  position: absolute;
+  left: -115px;
+  padding: 3px;
+  width: 115px;
+  height: 115px;
+  background: rgb(63, 249, 220);
+  transform: rotate(45deg);
+  animation: configure-xclockwise 3s ease-in-out 0s infinite alternate;
+}
+
+#loading-box .spinner-box .loading-word {
+  position: absolute;
+  color: var(--preloader-color, #fff);
+  font-size: 16px;
+}
+
+#loading-box .spinner-box .configure-core {
+  width: 100%;
+  height: 100%;
+  background-color: var(--preloader-bg, #37474f);
+}
+
+/* 加载完成后：左右两块向两侧滑出，spinner 隐藏 */
+#loading-box.loaded .loading-left-bg {
+  transition: all .5s;
+  transform: translate(-100%, 0);
+}
+
+#loading-box.loaded .loading-right-bg {
+  transition: all .5s;
+  transform: translate(100%, 0);
+}
+
+#loading-box.loaded .spinner-box {
+  display: none;
+}
+
+@keyframes configure-clockwise {
+  0%   { transform: rotate(0); }
+  25%  { transform: rotate(90deg); }
+  50%  { transform: rotate(180deg); }
+  75%  { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes configure-xclockwise {
+  0%   { transform: rotate(45deg); }
+  25%  { transform: rotate(-45deg); }
+  50%  { transform: rotate(-135deg); }
+  75%  { transform: rotate(-225deg); }
+  100% { transform: rotate(-315deg); }
+}
