@@ -33,29 +33,30 @@
 .like-btn .heart {
   position: relative;
   display: inline-block;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   margin-right: 10px;
   flex: 0 0 auto;
 }
 
-.like-btn .heart i {
+.like-btn .heart svg {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 19px;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
   transition: opacity 150ms ease-in-out;
 }
 
 .like-btn .heart .heart-empty {
-  color: #ff6b6b;          /* 空心：亮粉红描边感 */
+  fill: none;              /* 空心：描边 */
+  stroke: #ff6b6b;
+  stroke-width: 2.4;
   opacity: 1;
 }
 
 .like-btn .heart .heart-filled {
-  color: #ff3b3b;          /* 实心：正红 */
+  fill: #ff3b3b;           /* 实心：正红 */
   opacity: 0;
 }
 
@@ -92,9 +93,7 @@
 }
 
 @keyframes beatingHeart {
-  0%   { transform: scale(1); }
-  15%  { transform: scale(1.18); }
-  30%  { transform: scale(1); }
-  45%  { transform: scale(1.18); }
-  60%  { transform: scale(1); }
+  0%, 60%, 100% { transform: scale(1); }
+  30%           { transform: scale(1.15); }
+  45%           { transform: scale(1); }
 }
