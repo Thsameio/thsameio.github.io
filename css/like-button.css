@@ -1,7 +1,9 @@
 /* ==========================================================
-   点赞按钮（按钮外形/动效沿用 Uiverse.io by LilaRest，
-   爱心改用 Font Awesome 图标，保证形状稳定、渲染一致）
-   裸 button 选择器已收窄为 .like-btn，避免影响主题其它按钮
+   点赞按钮 v4（外形沿用 Uiverse.io by LilaRest）
+   心形为"单颗 SVG"：空心描边 → 悬停/已赞变实心，
+   只有一个元素，不存在两层叠放错位的可能。
+   注意：like-button.js 会注入同样的样式（自兜底），
+   本文件与 JS 保持一致即可。
    ========================================================== */
 .like-btn {
   display: flex;
@@ -29,7 +31,7 @@
   position: relative;
 }
 
-/* 两颗心叠在一起：默认显示空心，悬停/已赞显示实心并跳动 */
+/* 单颗心：默认空心描边，悬停/已赞变实心红 */
 .like-btn .heart {
   position: relative;
   display: inline-block;
@@ -45,19 +47,21 @@
   width: 100%;
   height: 100%;
   overflow: visible;
-  transition: opacity 150ms ease-in-out;
-}
-
-.like-btn .heart .heart-empty {
-  fill: none;              /* 空心：描边 */
+  fill: none;
   stroke: #ff6b6b;
-  stroke-width: 2.4;
-  opacity: 1;
+  stroke-width: 2.2;
+  transition: fill 200ms ease-in-out, stroke 200ms ease-in-out;
 }
 
-.like-btn .heart .heart-filled {
-  fill: #ff3b3b;           /* 实心：正红 */
-  opacity: 0;
+.like-btn:hover .heart svg {
+  fill: #ff6b6b;
+  stroke: #ff6b6b;
+}
+
+.like-btn.liked .heart svg {
+  fill: #ff4040;
+  stroke: #ff4040;
+  animation: beatingHeart 1.2s infinite;
 }
 
 @keyframes movingBorders {
@@ -70,18 +74,6 @@
   background-color: #eee;
   transform: scale(105%);
   animation: movingBorders 3s infinite;
-}
-
-/* 悬停 或 已点赞：空心淡出、实心出现并跳动 */
-.like-btn:hover .heart .heart-empty,
-.like-btn.liked .heart .heart-empty {
-  opacity: 0;
-}
-
-.like-btn:hover .heart .heart-filled,
-.like-btn.liked .heart .heart-filled {
-  opacity: 1;
-  animation: beatingHeart 1.2s infinite;
 }
 
 .like-btn .like-label {
