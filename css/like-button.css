@@ -1,6 +1,7 @@
 /* ==========================================================
-   点赞按钮（样式源自 Uiverse.io by LilaRest，已把裸 button
-   选择器收窄为 .like-btn，避免影响主题其它按钮）
+   点赞按钮（按钮外形/动效沿用 Uiverse.io by LilaRest，
+   爱心改用 Font Awesome 图标，保证形状稳定、渲染一致）
+   裸 button 选择器已收窄为 .like-btn，避免影响主题其它按钮
    ========================================================== */
 .like-btn {
   display: flex;
@@ -31,31 +32,31 @@
 /* 两颗心叠在一起：默认显示空心，悬停/已赞显示实心并跳动 */
 .like-btn .heart {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   width: 22px;
   height: 22px;
   margin-right: 10px;
+  flex: 0 0 auto;
 }
 
-.like-btn .heart svg {
+.like-btn .heart i {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 22px;
-  height: 22px;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  transition: opacity 150ms ease-in-out;
 }
 
-.like-btn .empty {
-  fill: none;
-  stroke: rgb(255, 110, 110);
-  stroke-width: 2;
-  transition: opacity 100ms ease-in-out;
+.like-btn .heart .heart-empty {
+  color: #ff6b6b;          /* 空心：亮粉红描边感 */
+  opacity: 1;
 }
 
-.like-btn .filled {
-  fill: rgb(255, 110, 110);
+.like-btn .heart .heart-filled {
+  color: #ff3b3b;          /* 实心：正红 */
   opacity: 0;
-  transition: opacity 100ms ease-in-out;
 }
 
 @keyframes movingBorders {
@@ -71,13 +72,13 @@
 }
 
 /* 悬停 或 已点赞：空心淡出、实心出现并跳动 */
-.like-btn:hover .empty,
-.like-btn.liked .empty {
+.like-btn:hover .heart .heart-empty,
+.like-btn.liked .heart .heart-empty {
   opacity: 0;
 }
 
-.like-btn:hover .filled,
-.like-btn.liked .filled {
+.like-btn:hover .heart .heart-filled,
+.like-btn.liked .heart .heart-filled {
   opacity: 1;
   animation: beatingHeart 1.2s infinite;
 }
@@ -92,8 +93,8 @@
 
 @keyframes beatingHeart {
   0%   { transform: scale(1); }
-  15%  { transform: scale(1.15); }
+  15%  { transform: scale(1.18); }
   30%  { transform: scale(1); }
-  45%  { transform: scale(1.15); }
+  45%  { transform: scale(1.18); }
   60%  { transform: scale(1); }
 }
