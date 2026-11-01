@@ -1,7 +1,9 @@
 /* ==========================================================
-   点赞按钮 v4（外形沿用 Uiverse.io by LilaRest）
-   心形为"单颗 SVG"：空心描边 → 悬停/已赞变实心，
-   只有一个元素，不存在两层叠放错位的可能。
+   点赞按钮 v5（外形沿用 Uiverse.io by LilaRest）
+   心形容器类名用 .lk-heart：不能叫 .heart！
+   Butterfly 的「点击爱心特效」(click_heart) 会在运行时注入
+   全局 .heart 样式（红方块 rotate(45deg) + 两个圆形伪元素），
+   类名撞车会把按钮的爱心污染成一坨红色圆块。
    注意：like-button.js 会注入同样的样式（自兜底），
    本文件与 JS 保持一致即可。
    ========================================================== */
@@ -32,7 +34,7 @@
 }
 
 /* 单颗心：默认空心描边，悬停/已赞变实心红 */
-.like-btn .heart {
+.like-btn .lk-heart {
   position: relative;
   display: inline-block;
   width: 26px;
@@ -41,7 +43,7 @@
   flex: 0 0 auto;
 }
 
-.like-btn .heart svg {
+.like-btn .lk-heart svg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -53,12 +55,12 @@
   transition: fill 200ms ease-in-out, stroke 200ms ease-in-out;
 }
 
-.like-btn:hover .heart svg {
+.like-btn:hover .lk-heart svg {
   fill: #ff6b6b;
   stroke: #ff6b6b;
 }
 
-.like-btn.liked .heart svg {
+.like-btn.liked .lk-heart svg {
   fill: #ff4040;
   stroke: #ff4040;
   animation: beatingHeart 1.2s infinite;

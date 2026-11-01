@@ -1,8 +1,11 @@
 /* ==========================================================
-   文章点赞按钮 v4
+   文章点赞按钮 v5
    - 只在真正的文章页（<article id="article-container">）显示
+   - 心形容器类名用 .lk-heart：不能叫 .heart！Butterfly 的
+     「点击爱心特效」(click_heart) 会注入全局 .heart 样式
+     （红方块 rotate(45deg) + 两个圆形伪元素），类名撞车会把
+     按钮爱心污染成一坨红色圆块（v4 之前一直背这个锅）。
    - 心形是"单颗 SVG"：空心描边，悬停/已赞变实心红。
-     只有一个元素，不会出现两层心叠放错位的问题。
    - 样式由本脚本注入 <style>（自兜底）：就算 like-button.css
      被浏览器/CDN 缓存成旧版，按钮也不会错乱。
    - 点赞状态存 localStorage，按文章路径区分（每篇文章独立记忆）
@@ -15,7 +18,7 @@
 (function () {
   'use strict';
 
-  /* ---------- 自注入样式（与 like-button.css v4 保持一致） ---------- */
+  /* ---------- 自注入样式（与 like-button.css v5 保持一致） ---------- */
   var STYLE_ID = 'like-button-style';
   if (!document.getElementById(STYLE_ID)) {
     var style = document.createElement('style');
@@ -28,13 +31,13 @@
       'font-size:20px;cursor:pointer;font-weight:900;color:rgb(134,124,124);' +
       'font-family:monospace;word-spacing:-2px;position:relative;' +
       'transition:transform 400ms cubic-bezier(.68,-.55,.27,2.5),border-color 400ms ease-in-out,background-color 400ms ease-in-out}' +
-      '.like-btn .heart{position:relative;display:inline-block;width:26px;height:26px;' +
+      '.like-btn .lk-heart{position:relative;display:inline-block;width:26px;height:26px;' +
       'margin-right:10px;flex:0 0 auto}' +
-      '.like-btn .heart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;' +
+      '.like-btn .lk-heart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;' +
       'fill:none;stroke:#ff6b6b;stroke-width:2.2;' +
       'transition:fill 200ms ease-in-out,stroke 200ms ease-in-out}' +
-      '.like-btn:hover .heart svg{fill:#ff6b6b;stroke:#ff6b6b}' +
-      '.like-btn.liked .heart svg{fill:#ff4040;stroke:#ff4040;animation:beatingHeart 1.2s infinite}' +
+      '.like-btn:hover .lk-heart svg{fill:#ff6b6b;stroke:#ff6b6b}' +
+      '.like-btn.liked .lk-heart svg{fill:#ff4040;stroke:#ff4040;animation:beatingHeart 1.2s infinite}' +
       '@keyframes movingBorders{0%{border-color:#fce4e4}50%{border-color:#ffd8d8}90%{border-color:#fce4e4}}' +
       '.like-btn:hover{background-color:#eee;transform:scale(105%);animation:movingBorders 3s infinite}' +
       '.like-btn .like-label{margin-right:8px}' +
@@ -90,7 +93,7 @@
     btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
     btn.setAttribute('aria-label', '点赞');
     btn.innerHTML =
-      '<span class="heart">' +
+      '<span class="lk-heart">' +
         '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
           '<path d="' + HEART_PATH + '"/>' +
         '</svg>' +
